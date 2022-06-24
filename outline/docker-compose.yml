@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  outline:
+    image: docker.io/outlinewiki/outline
+    container_name: outline
+    restart: unless-stopped
+    # enable this line for first time launch
+    # command: sh -c "yarn sequelize:migrate --env production-ssl-disabled && yarn start"
+    env_file: .env
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+      - redis
+      - minio
+    networks:
+      - app
+
+networks:
+  app:
+    external: true

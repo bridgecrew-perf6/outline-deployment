@@ -1,0 +1,16 @@
+{
+    admin off
+    email your_email@here.com
+}
+
+outline.your_domain_name.com {
+    tls your_email@here.com
+
+    reverse_proxy outline:3000
+}
+
+minio.your_domain_name {
+    tls your_email@here.com
+
+    reverse_proxy minio:9000
+}
